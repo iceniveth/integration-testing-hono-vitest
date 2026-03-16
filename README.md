@@ -50,6 +50,24 @@ npm run dev
 
 The app will run on `http://localhost:3000`
 
+## Running in Docker
+
+This project includes a `Dockerfile`, so you can build and run the app in a container.
+
+### Build the image
+
+```bash
+docker build -t example-names .
+```
+
+### Run the container
+
+```bash
+docker run --rm -p 3000:3000 --name example-app --env-file .env example-names
+```
+
+> ⚠️ Make sure your `.env` file is configured before running the container (especially `DATABASE_URL`).
+
 ## Testing
 
 Run the test suite:

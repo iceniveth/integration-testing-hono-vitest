@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment files
+.env
+.env.*
+
+# Tests
+tests/
+
+# Dev/tooling config
+drizzle.config.ts
+vitest.config.ts
+http/
+
+# Docs
+README.md
+
+# Version control
+.git/
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
