@@ -5,6 +5,10 @@ dotenv.config();
 
 export default defineConfig({
   test: {
+    sequence: {
+      concurrent: true,
+      shuffle: true,
+    },
     // ...options
   },
 });
