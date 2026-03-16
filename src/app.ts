@@ -1,10 +1,12 @@
 import { Hono } from "hono";
+import { logger } from "hono/logger";
 import listNames from "./names/listNames.js";
 import addName from "./names/addName.js";
 import { UniqueConstraintError } from "./errors.js";
 
 const app = new Hono();
 
+app.use(logger());
 app.get("/", (c) => {
   return c.text("Hello Hono!");
 });
