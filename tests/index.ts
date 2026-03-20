@@ -5,13 +5,13 @@ export function describeWithTransaction(
   name: string,
   fn: () => void | Promise<void>,
 ) {
-  describe(name, () => {
+  describe(name, async () => {
     beforeEach(async () => {
-      await db.execute(`BEGIN`);
+      await db.begin();
     });
 
     afterEach(async () => {
-      await db.execute(`ROLLBACK`);
+      await db.rollback();
     });
 
     fn();

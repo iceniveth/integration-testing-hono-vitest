@@ -5,13 +5,15 @@ import { UniqueConstraintError } from "../errors.js";
 
 export default async function addName({ name }: { name: string }) {
   try {
-    const [newName] = await db
-      .insert(namesTable)
-      .values({ name })
-      .returning()
-      .execute();
+    return await db.transaction(async (tx) => {
+      const [newName] = await tx
+        .insert(namesTable)
+        .values({ name })
+        .returning()
+        .execute();
 
-    return newName;
+      return newName;
+    });
   } catch (error) {
     if (error instanceof DrizzleQueryError) {
       if (
